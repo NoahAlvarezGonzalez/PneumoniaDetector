@@ -9,6 +9,7 @@ import base64
 import io
 
 
+st.title("Pneumonia Detector")
 model = load_model("pneumonia_A88_R94_AUC95_128x128.h5")
 
 
@@ -34,5 +35,5 @@ if uploaded_file is not None:
         buffered = io.BytesIO()
         dl.save(buffered, format="JPEG")
         dl_str = base64.b64encode(buffered.getvalue()).decode()
-        href = f'<a href="data:file/jpg;base64,{dl_str}" download="result.jpg">Download JPEG File</a>'
+        href = f'<a href="data:file/jpg;base64,{dl_str}" download="result.jpg">Click here to download your file</a>'
         st.markdown(href, unsafe_allow_html=True)
